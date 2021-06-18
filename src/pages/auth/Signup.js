@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Input from "../../components/Form Elements/Input";
 
 function Signup() {
+	const history = useHistory();
+
 	const [name, setName] = useState({
 		value: "",
 		isValid: false,
@@ -18,7 +20,6 @@ function Signup() {
 		isValid: false,
 		isTouch: false,
 	});
-	const [error, setError] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [formValidity, setFormValidity] = useState(false);
 
@@ -61,11 +62,39 @@ function Signup() {
 		}
 	}, [email.isValid, password.isValid, name.isValid]);
 
-	const onSubmitHandler = (e) => {};
+	const onSubmitHandler = async (e) => {
+		e.preventDefault();
+		setIsLoading(true);
+		try {
+			const response = await fetch(
+				`${process.env.REACT_APP_BACKEND_URL}/user/signup`,
+				{
+					method: "POST",
+					body: JSON.stringify({
+						name: name.value,
+						email: email.value,
+						password: password.value,
+					}),
+					headers: { "Content-Type": "application/json" },
+				}
+			);
+			const responseData = await response.json();
+			if (!response.ok) {
+				throw new Error(responseData.message);
+			}
+			console.log(responseData);
+			setIsLoading(false);
+			history.push("/");
+		} catch (err) {
+			setIsLoading(false);
+			console.log(err);
+		}
+	};
 
 	return (
 		<React.Fragment>
 			<div className='form-container'>
+				{isLoading && <h1>Loading...</h1>}
 				{!isLoading && <h2 style={{ color: "#404040" }}>Sign Up</h2>}
 				<form onSubmit={onSubmitHandler}>
 					<Input
@@ -104,7 +133,7 @@ function Signup() {
 						touch={password.isTouch}
 					/>
 					{/* disabled={!formValidity} */}
-					<button className='btn' disabled type='button'>
+					<button className='btn' type='submit'>
 						Sign Up
 					</button>
 					<p>
