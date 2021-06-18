@@ -1,0 +1,30 @@
+.main-header {
+	background-color: var(--purple);
+	height: 10vh;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: inherit;
+	font-size: 1.5rem;
+	padding: 0 2rem;
+}
+.main-header a {
+	list-style: none;
+	text-decoration: none;
+	color: var(--yellow);
+}
+
+.navlinks {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.navlinks a {
+	color: var(--yellow);
+	text-decoration: none;
+	font-size: 1.5rem;
+	padding: 2rem 1.25rem;
+	margin: 0;
+}

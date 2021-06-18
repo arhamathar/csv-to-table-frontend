@@ -5,12 +5,13 @@ import NewCsv from "./pages/NewCsv";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 import Dashboard from "./pages/Dashboard";
+import Navbar from "./components/Ui/Navbar";
 import "./App.css";
 
 function App() {
 	return (
 		<Router>
-			{/* {Navbar} */}
+			<Navbar />
 			<Switch>
 				<Route path='/' exact>
 					<Home />
