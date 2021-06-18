@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Input from "../../components/Form Elements/Input";
+import AuthContext from "../../context/authContext";
 
 function Login() {
 	const history = useHistory();
+	const auth = useContext(AuthContext);
 
 	const [email, setEmail] = useState({
 		value: "",
@@ -68,6 +70,7 @@ function Login() {
 				throw new Error(responseData.message);
 			}
 			console.log(responseData);
+			auth.login(responseData.userId, responseData.token);
 			setIsLoading(false);
 			history.push("/");
 		} catch (err) {

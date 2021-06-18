@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Input from "../../components/Form Elements/Input";
+import AuthContext from "../../context/authContext";
 
 function Signup() {
 	const history = useHistory();
+	const auth = useContext(AuthContext);
 
 	const [name, setName] = useState({
 		value: "",
@@ -83,7 +85,9 @@ function Signup() {
 				throw new Error(responseData.message);
 			}
 			console.log(responseData);
+
 			setIsLoading(false);
+			auth.login(responseData.userId, responseData.token);
 			history.push("/");
 		} catch (err) {
 			setIsLoading(false);
