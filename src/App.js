@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Login from "./auth/Login";
-import Signup from "./auth/Signup";
-import Dashboard from "./pages/Dashboard";
 import NewCsv from "./pages/NewCsv";
+import Login from "./pages/auth/Login";
+import Signup from "./pages/auth/Signup";
+import Dashboard from "./pages/Dashboard";
+import "./App.css";
 
 function App() {
 	return (
@@ -20,10 +21,10 @@ function App() {
 				<Route path='/new-csv' exact>
 					<NewCsv />
 				</Route>
-				<Route path='/login' exact>
+				<Route path='/auth/login' exact>
 					<Login />
 				</Route>
-				<Route path='/signup' exact>
+				<Route path='/auth/signup' exact>
 					<Signup />
 				</Route>
 			</Switch>
