@@ -69,7 +69,7 @@ function Signup() {
 		setIsLoading(true);
 		try {
 			const response = await fetch(
-				`${process.env.REACT_APP_BACKEND_URL}/user/signup`,
+				`${process.env.REACT_APP_BACKEND_URL_DEV}/user/signup`,
 				{
 					method: "POST",
 					body: JSON.stringify({

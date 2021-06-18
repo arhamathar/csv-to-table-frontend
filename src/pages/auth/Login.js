@@ -55,7 +55,7 @@ function Login() {
 		setIsLoading(true);
 		try {
 			const response = await fetch(
-				`${process.env.REACT_APP_BACKEND_URL}/user/login`,
+				`${process.env.REACT_APP_BACKEND_URL_DEV}/user/login`,
 				{
 					method: "POST",
 					body: JSON.stringify({
