@@ -1,46 +1,43 @@
 import React, { useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 function CsvUpload() {
-	const [file, setFile] = useState();
+	const history = useHistory();
+	const [csv, setCsv] = useState("");
+	const [csvString, setCsvString] = useState("");
 	const [fileName, setFileName] = useState("Pick CSV");
 
-	const filePickerRef = useRef();
-
 	const onChangeHandler = (e) => {
-		let files = e.target.files;
-		setFile(e.target.files);
+		setCsv(e.target.files[0]);
 		setFileName(e.target.files[0].name);
-
-		const reader = new FileReader();
-		// if (files && files[1] === 1) {
-		reader.readAsDataURL(files[0]);
-		reader.onload = (e) => {
-			console.log("data", typeof e.target.result);
-		};
-		// }
-
-		console.log(files);
 	};
 
 	const onClickHandler = (e) => {
-		filePickerRef.current.click();
+		const reader = new FileReader();
+		reader.onload = () => {
+			setCsvString(reader.result);
+		};
+		reader.readAsBinaryString(csv);
+		console.log(csvString);
+		history.push("/csv-table-preview");
 	};
 
 	return (
 		<div className='form-container'>
 			<p>Choose CSV File</p>
-			<input
-				id='csv'
-				type='file'
-				name='file'
-				accept='.csv'
-				style={{ display: "none" }}
-				ref={filePickerRef}
-				onChange={onChangeHandler}
-			/>
-			<button className='btn' type='button' onClick={onClickHandler}>
-				{fileName}
-			</button>
+			<div>
+				<input
+					id='csv'
+					type='file'
+					name='file'
+					accept='.csv'
+					onChange={onChangeHandler}
+					required
+				/>
+				<button className='btn' type='button' onClick={onClickHandler}>
+					{fileName}
+				</button>
+			</div>
 		</div>
 	);
 }

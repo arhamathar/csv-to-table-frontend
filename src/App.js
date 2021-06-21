@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import Navbar from "./components/Ui/Navbar";
 import AuthContext from "./context/authContext";
 import "./App.css";
+import CsvTable from "./components/Table/CsvTable";
 
 function App() {
 	const [token, setToken] = useState(false);
@@ -56,6 +57,9 @@ function App() {
 					</Route>
 					<Route path='/new-csv' exact>
 						<NewCsv />
+					</Route>
+					<Route path='/csv-table-preview' exact>
+						<CsvTable />
 					</Route>
 					<Route path='/auth/login' exact>
 						<Login />
