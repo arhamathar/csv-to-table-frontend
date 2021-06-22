@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import NewCsv from "./pages/NewCsv";
+import Preview from "./pages/Preview";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 import Dashboard from "./pages/Dashboard";
 import Navbar from "./components/Ui/Navbar";
 import AuthContext from "./context/authContext";
 import "./App.css";
-import CsvTable from "./components/Table/CsvTable";
 
 function App() {
 	const [token, setToken] = useState(false);
@@ -59,7 +59,7 @@ function App() {
 						<NewCsv />
 					</Route>
 					<Route path='/csv-table-preview' exact>
-						<CsvTable />
+						<Preview />
 					</Route>
 					<Route path='/auth/login' exact>
 						<Login />

@@ -6,7 +6,7 @@ function Home() {
 		<div className='home'>
 			<h1>Welcome to CSV Converter</h1>
 			<p>
-				To convet new CSV file
+				To convret new CSV file
 				<Link to='/new-csv'>Click Here</Link>
 			</p>
 			<p>

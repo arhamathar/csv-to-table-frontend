@@ -1,7 +1,7 @@
 import React from "react";
 
 function CsvTable() {
-	return <div></div>;
+	return <div>table</div>;
 }
 
 export default CsvTable;
