@@ -24,7 +24,7 @@ function CsvUpload() {
 	return (
 		<div className='form-container'>
 			{!csvString && (
-				<div>
+				<div className='form-container__div'>
 					<p>Choose CSV File</p>
 					<div>
 						<input

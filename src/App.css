@@ -14,7 +14,7 @@
 	font-size: 1.2rem;
 }
 
-.form-container div {
+.form-container__div {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -53,6 +53,35 @@ btn:disabled {
 .btn:hover:disabled {
 	background-color: #ccc;
 	color: #777;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid rgba(113, 113, 113, 0.5);
+	/* box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.2); */
+}
+
+th {
+	text-align: left;
+	padding: 2vh;
+	background-color: var(--purple);
+	color: var(--yellow);
+}
+
+td {
+	text-align: left;
+	padding: 2vh;
+}
+
+tr:nth-child(even) {
+	background-color: #cccccc;
+	color: rgb(0, 0, 0);
+}
+
+tr:nth-child(odd) {
+	background-color: #f2f2f2;
+	color: rgb(0, 0, 0);
 }
 
 @media (min-width: 786px) {

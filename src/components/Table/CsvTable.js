@@ -1,7 +1,30 @@
 import React from "react";
 
-function CsvTable() {
-	return <div>table</div>;
+function CsvTable({ data }) {
+	if (data.length === 0) return null;
+
+	const rowData = data.filter((row) => data.indexOf(row) > 0);
+
+	return (
+		<table>
+			<thead>
+				<tr>
+					{data[0].map((heading) => (
+						<th>{heading}</th>
+					))}
+				</tr>
+			</thead>
+			<tbody>
+				{rowData.map((row) => (
+					<tr>
+						{row.map((element) => (
+							<td>{element}</td>
+						))}
+					</tr>
+				))}
+			</tbody>
+		</table>
+	);
 }
 
 export default CsvTable;
